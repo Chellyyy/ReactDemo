@@ -51,17 +51,17 @@ class PCHeader extends React.Component {
       });
     };
     handleClick(e) {
-      if (e.key = "register") {
+      if (e.key == "register") {
         this.setState({
           current: "register"
         });
         this.setModalVisible(true);
       } else {
-        {
+
           this.setState({
             current: e.key
           });
-        }
+
       }
     };
     handleSubmit(e) {
@@ -112,19 +112,26 @@ class PCHeader extends React.Component {
       });
     };
   render() {
+    const login_style={
+      float:"right"
+    };
     let { getFieldDecorator } = this.props.form;
     const userShow = this.state.hasLogined
     ?
-    <Menu.Item key="logout" class="register">
-    <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
-    &nbsp;&nbsp;
-      <Button type="dashed" htmlType="button">个人中心</Button>
-    &nbsp;&nbsp;
-    <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
+    <Menu.Item key="logout" style={login_style}>
+      <div class="register">
+        <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
+        &nbsp;&nbsp;
+        <Button type="dashed" htmlType="button">个人中心</Button>
+        &nbsp;&nbsp;
+        <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
+      </div>
     </Menu.Item>
     :
-    <Menu.Item key="register" class="register">
-      注册/登录
+    <Menu.Item key="register" style={login_style}>
+      <div class="register">
+        注册/登录
+      </div>
     </Menu.Item>;
     return (
       <header>

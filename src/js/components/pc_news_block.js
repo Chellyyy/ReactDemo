@@ -27,6 +27,7 @@ export default class PCNewsBlock extends React.Component{
   componentDidMount(){
   }
   render(){
+    const news_border = Boolean(this.props.border);
     const styleImage={
       display:"inline",
       width:this.props.imageWidth,
@@ -48,7 +49,7 @@ export default class PCNewsBlock extends React.Component{
               <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s} />
             </span>
             <div class="newsBlock-card">
-              <h3 style={styleH3}>{newsItem.title}</h3>
+              <h3 style={styleH3}>{newsItem.title}</h3><br/><br/>
               <p>{newsItem.author_name}</p>
             </div>
       </li>
@@ -57,7 +58,7 @@ export default class PCNewsBlock extends React.Component{
     '没有加载到任何新闻';
     return(
       <div class="newsBlock">
-        <Card>
+        <Card  bordered={news_border}>
           <ul>
             {newsList}
           </ul>

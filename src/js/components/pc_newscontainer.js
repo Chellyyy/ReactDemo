@@ -9,6 +9,7 @@ import {
 } from 'antd';
 import PCNewsBlock from './pc_news_block';
 import PCNewsImageBlock from './pc_news_image_block';
+import PCNewsList from './pc_news_list';
 const TabPane = Tabs.TabPane;
 
 export default class PCNewsContainer extends React.Component {
@@ -39,26 +40,26 @@ export default class PCNewsContainer extends React.Component {
               </div>
 
               <div class="leftContainer">
-                <PCNewsImageBlock count={6} type="guoji" width="150px" cardTitle="国际头条" imageWidth="100px" border=""></PCNewsImageBlock>
+                <PCNewsImageBlock count={6} type="guoji" width="150px" cardTitle="国际头条" imageWidth="100px" imageHeight="100px" border=""></PCNewsImageBlock>
               </div>
 
-              <div class="tabs_news">
+              <div class="centerContainer">
                 <Tabs>
                   <TabPane tab="社会" key="1">
-                      <PCNewsBlock count={5} type="shehui" width="100%" border="false"></PCNewsBlock>
+                      <PCNewsBlock count={12} type="shehui" width="100%" border=""></PCNewsBlock>
                   </TabPane>
                   <TabPane tab="体育" key="2">
-                      <PCNewsBlock count={5} type="tiyu" width="100%" border="false"></PCNewsBlock>
+                      <PCNewsBlock count={12} type="tiyu" width="100%" border=""></PCNewsBlock>
                   </TabPane>
                   <TabPane tab="科技" key="3">
-                      <PCNewsBlock count={5} type="keji" width="100%" border="false"></PCNewsBlock>
+                      <PCNewsBlock count={12} type="keji" width="100%" border=""></PCNewsBlock>
                   </TabPane>
                 </Tabs>
               </div>
 
-              <div>
-                <PCNewsImageBlock count={8} type="guonei" width="100%" cardTitle="国内头条" imageWidth="120px" border="true"></PCNewsImageBlock>
-                <PCNewsImageBlock count={16} type="yule" width="100%" cardTitle="娱乐头条" imageWidth="120px" border="true"></PCNewsImageBlock>
+              <div class="rightContainer">
+                <PCNewsImageBlock count={1} type="guonei" width="100%" cardTitle="国内头条" imageWidth="250px" imageHeight="150px" border=""></PCNewsImageBlock>
+                <PCNewsList count={10} type="guonei" ></PCNewsList>
               </div>
 
             </div>

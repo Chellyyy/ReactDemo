@@ -1,4 +1,11 @@
-
+header{
+  position:fixed;
+  top:0;
+  background-color: #fff;
+  width: 100%;
+  height: 50px;
+  z-index: 999;
+}
 .logo{
   align-items: center;
   display: flex;
@@ -10,6 +17,7 @@
 .logo span{
   font-size: 24px;
   padding-left: 5px;
+  color: #2db7f5;
 }
 .ant-col-20{
   text-align: center !important;
@@ -34,8 +42,14 @@
   width: 100%;
 }
 .leftContainer{
-  width: 150px;
+  width: 15%;
   float: left;
+}
+.leftContainer .ant-card-head{
+
+}
+.leftContainer .ant-card-head-title{
+  font-size: 20px !important;
 }
 #container {
     text-align: center !important;
@@ -53,15 +67,55 @@
   margin-right: 10px;
   vertical-align: middle;
 }
+.centerContainer .ant-tabs-nav-wrap{
+  padding: 9px 0px 0px 0px;
+  font-size: 20px;
+}
+/*rightContainer START  */
+.rightContainer{
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+.rightContainer .ant-card-head{
+  border: 0px !important;
+}
+.rightContainer .ant-card-head-title{
+  font-size: 20px !important;
+}
+.rightContainer li{
+  height: 27px;
+  width: 100%;
+  line-height: 27px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
+  text-overflow: ellipsis;
+}
+.rightContainer .topNewsList{
+  width: 300px;
+}
 
+.topNewsList {
+    float: left;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.topNewsList a {
+    line-height: 22px !important;
+    color: #666 !important;
+}
+/*rightContainer END  */
 /*carousel START*/
-.carousel {
+.centerImage .carousel {
     width: 100%;
     float: left;
 }
-.carousel img {
+.centerImage .carousel img {
     width: 100%;
-    height: 260px;
+    height: 400px;
 }
 /*carousel END*/
 
@@ -69,20 +123,25 @@
 .ant-card{
   margin-top: 5px !important;
 }
-
+.ant-card-body{
+  padding: 10px !important;
+}
 .ant-card-head-title{
   text-align: left !important;
+  padding: 13px 0px !important;
 }
-.tabs_news .ant-card-body ul{
+.ant-card-body ul{
     padding: 0px !important;
 }
-.tabs_news .ant-card-body ul li{
+.centerContainer .ant-card-body ul li{
   width: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  padding-top: 5px;
 }
-.tabs_news .ant-card-body{
+.centerContainer .ant-card-body{
   text-align: left !important;
   overflow:hidden;
-  width: 80%;
+  width: 100%;
   text-overflow:ellipsis;
 }
 .ant-tabs-nav-scroll{
@@ -107,7 +166,7 @@
 }
 .newsBlock-card{
   float: left;
-  width: 300px;
+  width: 70%;
 }
 /*newsBlock END  */
 /*image block START*/
@@ -129,23 +188,17 @@
 
 /*image blockn END*/
 
-.topNewsList {
-    float: left;
-    text-align: left;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-.topNewsList a {
-    line-height: 22px !important;
-    color: #666 !important;
-}
-.tabs_news {
+
+.centerContainer {
     padding-left: 10px;
     width: 60%;
     float: left;
 }
-.tabs_news li {
-    height: 150px;
+.centerContainer ul{
+  width: 100%;
+}
+.centerContainer li {
+    height: 120px;
     font-size: 14px;
     white-space: nowrap;
     overflow: hidden;

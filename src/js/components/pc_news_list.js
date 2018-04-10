@@ -27,7 +27,7 @@ export default class PCNewsList extends React.Component{
   componentDidMount(){
   }
   render(){
-
+    const news_border = Boolean(this.props.border);
     const { news } = this.state;
     const newsList = news.length
     ?
@@ -42,7 +42,7 @@ export default class PCNewsList extends React.Component{
     '没有加载到任何新闻';
     return(
       <div class="topNewsList">
-        <Card>
+        <Card bordered={news_border}>
           <ul>
             {newsList}
           </ul>

@@ -26,7 +26,7 @@ class PCHeader extends React.Component {
     constructor() {
       super();
       this.state = {
-        current: 'top',
+        current: 'index',
         modalVisible: false,
         action: "login",
         hasLogined: false,
@@ -43,8 +43,21 @@ class PCHeader extends React.Component {
   				userNickName: localStorage.userNickName,
   				userid: localStorage.userid
   			});
-  		}
+  		};
   	};
+    componentDidMount(){
+
+      if(this.props.type!='undefined'){
+         this.setState({
+           current:this.props.type,
+         });
+      }else{
+        this.setState({
+          current:'index'
+        });
+      };
+
+    }
     setModalVisible(value) {
       this.setState({
         modalVisible: value
@@ -56,12 +69,11 @@ class PCHeader extends React.Component {
           current: "register"
         });
         this.setModalVisible(true);
-      } else {
-
+      }
+       else {
           this.setState({
             current: e.key
           });
-
       }
     };
     handleSubmit(e) {
@@ -71,13 +83,13 @@ class PCHeader extends React.Component {
         method: 'GET'
       };
       var formData = this.props.form.getFieldsValue();
-      console.log(formData);
       fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
       + "&username=" + formData.userName + "&password=" + formData.password
       + "&r_userName=" + formData.r_userName + "&r_password="
       + formData.r_password + "&r_confirmPassword="
-      + formData.r_confirmPassword, myFetchOptions).
-      then(response => response.json()).then(json => {
+      + formData.r_confirmPassword, myFetchOptions)
+      .then(response => response.json())
+      .then(json => {
         this.setState({
           userNickName: json.NickUserName,
           userid: json.UserId
@@ -122,7 +134,9 @@ class PCHeader extends React.Component {
       <div class="register">
         <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
         &nbsp;&nbsp;
-        <Button type="dashed" htmlType="button">个人中心</Button>
+        <Link target="_blank" to={`/usercenter`}>
+          <Button type="dashed" htmlType="button">个人中心</Button>
+        </Link>
         &nbsp;&nbsp;
         <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
       </div>
@@ -133,6 +147,7 @@ class PCHeader extends React.Component {
         注册/登录
       </div>
     </Menu.Item>;
+
     return (
       <header>
         <Row>
@@ -145,29 +160,50 @@ class PCHeader extends React.Component {
           </Col>
           <Col span={16}>
             <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
+              <Menu.Item key="index">
+                <Link to={`/`}>
+                  首页
+                </Link>
+              </Menu.Item>
               <Menu.Item key="top">
-                头条
+                <Link to={`../../class/top/20`}>
+                  头条
+                </Link>
               </Menu.Item>
               <Menu.Item key="shehui">
-                社会
+                <Link to={`../../class/shehui/20`}>
+                  社会
+                </Link>
               </Menu.Item>
               <Menu.Item key="guonei">
-                国内
+                <Link to={`../../class/guonei/20`}>
+                  国内
+                </Link>
               </Menu.Item>
               <Menu.Item key="guoji">
-                国际
+                <Link to={`../../class/guoji/20`}>
+                  国际
+                </Link>
               </Menu.Item>
               <Menu.Item key="yule">
-                娱乐
+                <Link to={`../../class/yule/20`}>
+                  娱乐
+                </Link>
               </Menu.Item>
               <Menu.Item key="tiyu">
-                体育
+                <Link to={`../../class/tiyu/20`}>
+                  体育
+                </Link>
               </Menu.Item>
               <Menu.Item key="keji">
-                科技
+                <Link to={`../class/keji/20`}>
+                  科技
+                </Link>
               </Menu.Item>
               <Menu.Item key="shishang">
-                时尚
+                <Link to={`../class/shishang/20`}>
+                  时尚
+                </Link>
               </Menu.Item>
               {userShow}
             </Menu>

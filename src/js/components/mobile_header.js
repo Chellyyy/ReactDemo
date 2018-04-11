@@ -4,7 +4,7 @@ import {
   Row,
   Col
 } from 'antd';
-import logo from '../../images/logo.png'
+import logo from '../../images/logo.png';
 import {
   Menu,
   Icon,
@@ -42,7 +42,7 @@ class MobileHeader extends React.Component {
     this.setState({modalVisible:value});
   };
   handleClick(e){
-    if (e.key="register"){
+    if (e.key == "register"){
       this.setState({current:"register"});
       this.setModalVisible(true);
     }else{
@@ -80,7 +80,7 @@ class MobileHeader extends React.Component {
   render() {
     let { getFieldDecorator } = this.props.form;
     const userShow = this.state.hasLogined?
-    <Link>
+    <Link to={`/usercenter`}>
       <Icon type="inbox"/>
     </Link>
     :
@@ -89,7 +89,7 @@ class MobileHeader extends React.Component {
     return (
       <div id="mobileheader">
         <header>
-          <img src="./src/images/logo.png" alt="logo"/>
+          <img src={logo} alt="logo"/>
           <span>News</span>
           {userShow}
         </header>

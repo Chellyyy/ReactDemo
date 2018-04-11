@@ -21,8 +21,6 @@ export default class PCNewsList extends React.Component{
 		.then(json => this.setState({
 			news: json
 		}));
-
-    console.log("123");
   };
   componentDidMount(){
   }
@@ -33,9 +31,9 @@ export default class PCNewsList extends React.Component{
     ?
     news.map((newsItem,index)=>(
       <li key={index}>
-
+        <Link to={`details/${newsItem.uniquekey}`} target="_blank">
           {newsItem.title}
-
+        </Link>
       </li>
     ))
     :

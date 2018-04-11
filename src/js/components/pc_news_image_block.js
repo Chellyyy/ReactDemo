@@ -28,7 +28,7 @@ export default class PCNewsImageBlock extends React.Component {
 
   };
   componentDidMount() {
-    console.log(this.props.border);
+
   }
   render() {
     const news_border = Boolean(this.props.border);
@@ -47,7 +47,7 @@ export default class PCNewsImageBlock extends React.Component {
     const newsList = news.length ?
       news.map((newsItem, index) => (
         <div key={index} class="imageblock">
-        {/*Link*/}
+          <Link to={`details/${newsItem.uniquekey}`} target="_blank">
         <div class="custom-image">
           <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s} />
         </div>
@@ -55,7 +55,7 @@ export default class PCNewsImageBlock extends React.Component {
           <h3 style={styleH3}>{newsItem.title}</h3>
           <p>{newsItem.author_name}</p>
         </div>
-        {/*Link*/}
+        </Link>
       </div>
       )) :
       '没有加载到任何新闻';

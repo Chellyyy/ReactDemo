@@ -21,8 +21,6 @@ export default class PCNewsBlock extends React.Component{
 		.then(json => this.setState({
 			news: json
 		}));
-
-    console.log("123");
   };
   componentDidMount(){
   }
@@ -45,6 +43,7 @@ export default class PCNewsBlock extends React.Component{
     ?
     news.map((newsItem,index)=>(
       <li key={index}>
+        <Link to={`details/${newsItem.uniquekey}`} target="_blank">
             <span class="newsBlock-image">
               <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s} />
             </span>
@@ -52,6 +51,7 @@ export default class PCNewsBlock extends React.Component{
               <h3 style={styleH3}>{newsItem.title}</h3><br/><br/>
               <p>{newsItem.author_name}</p>
             </div>
+          </Link>
       </li>
     ))
     :

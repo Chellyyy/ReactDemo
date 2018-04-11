@@ -1,11 +1,11 @@
 import React from 'react';
-import {
-  Row,
-  Col
-} from 'antd';
-import { Link } from 'react-router-dom'
-
-export default class MobileList extends React.Component{
+import{Row, Col, BackTop} from 'antd';
+import PCHeader from './pc_header';
+import PCFooter from './pc_footer';
+import PCNewsImageBlock from './pc_news_image_block';
+import CommonComments from './common_comments';
+import { Link } from 'react-router-dom';
+export default class PCNewsClass extends React.Component{
   constructor(){
     super();
     this.state = {
@@ -13,28 +13,40 @@ export default class MobileList extends React.Component{
     };
   };
   componentWillMount(){
+  };
+  componentDidUpdate(){
     var myFetchOptions = {
       method: 'GET'
     };
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="
-    + this.props.type
+    + this.props.match.params.type
     + "&count="
-    + this.props.count,myFetchOptions)
+    + this.props.match.params.count,myFetchOptions)
     .then(response => response.json())
-		.then(json => this.setState({
-			news: json
-		}));
+    .then(json => this.setState({
+      news: json
+    }));
   };
-  componentDidMount(){
-  }
+  componentWillMount(){
+    var myFetchOptions = {
+      method: 'GET'
+    };
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="
+    + this.props.match.params.type
+    + "&count="
+    + this.props.match.params.count,myFetchOptions)
+    .then(response => response.json())
+    .then(json => this.setState({
+      news: json
+    }));
+  };
   render(){
-    const news_border = Boolean(this.props.border);
     const { news } = this.state;
     const newsList = news.length
     ?
     news.map((newsItem,index)=>(
       <section key={index} className="m_article list-item special_section clearfix">
-        <Link to={`details/${newsItem.uniquekey}`} target="_blank">
+        <Link to={`../../details/${newsItem.uniquekey}`} target="_blank">
           <div className="m_article_img">
             <img src={newsItem.thumbnail_pic_s} alt={newsItem.title}/>
           </div>
@@ -56,11 +68,16 @@ export default class MobileList extends React.Component{
     '没有加载到任何新闻';
     return(
       <div>
+        <PCHeader type={this.props.match.params.type}></PCHeader>
         <Row>
-          <Col span={24}>
+          <Col span={2}></Col>
+          <Col span={20} className="pc-news-class">
             {newsList}
           </Col>
+          <Col span={2}></Col>
         </Row>
+        <PCFooter></PCFooter>
+        <BackTop/>
       </div>
     );
   };
